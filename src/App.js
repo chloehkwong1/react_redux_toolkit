@@ -1,5 +1,5 @@
 import Counter from "./features/counter/Counter";
-import Posts from "./features/posts/Posts";
+import PostsList from "./features/posts/PostsList";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/counter" element={<Counter />} />
-          <Route path="/posts" element={<Posts />} />
+          <Route path="/posts" element={<PostsList />} />
         </Routes>
       </div>
     </BrowserRouter>
