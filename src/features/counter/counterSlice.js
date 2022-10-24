@@ -4,7 +4,7 @@ const initialState = {
   count: 0,
 };
 
-export const counterslice = createSlice({
+export const counterSlice = createSlice({
   name: "counter",
   initialState,
   // create actions with anonymous functions inside this reducers object
