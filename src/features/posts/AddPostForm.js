@@ -17,6 +17,7 @@ const AddPostForm = () => {
 
   const navigate = useNavigate();
   const onSavePostClicked = () => {
+    // we want to abstract this logic to the reducer in case the state format changes
     if (title && content) {
       dispatch(
         postAdded({
