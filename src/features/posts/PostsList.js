@@ -3,8 +3,9 @@ import { selectAllPosts } from "./postsSlice";
 
 const PostsList = () => {
   const posts = useSelector(selectAllPosts);
+  const reversePosts = posts.slice(0).reverse();
 
-  const renderedPosts = posts.map((post) => (
+  const renderedPosts = reversePosts.map((post) => (
     <article key={post.id}>
       <h3>{post.title}</h3>
       <p>{post.content.substring(0, 100)}</p>
