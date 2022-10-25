@@ -22,12 +22,13 @@ const postsSlice = createSlice({
         state.push(action.payload);
       },
       // prepare callback function that is used to construct the payload value
-      prepare(title, content) {
+      prepare(title, content, userId) {
         return {
           payload: {
             id: nanoid(),
             title,
             content,
+            userId,
           },
         };
       },
