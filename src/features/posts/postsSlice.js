@@ -21,6 +21,7 @@ const postsSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
+      // prepare callback function that is used to construct the payload value
       prepare(title, content) {
         return {
           payload: {
