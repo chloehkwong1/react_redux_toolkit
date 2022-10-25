@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// nanoid is smaller and faster than uuid
-import { nanoid } from "@reduxjs/toolkit";
 
 import { postAdded } from "./postsSlice";
 
@@ -19,13 +17,7 @@ const AddPostForm = () => {
   const onSavePostClicked = () => {
     // we want to abstract this logic to the reducer in case the state format changes
     if (title && content) {
-      dispatch(
-        postAdded({
-          id: nanoid(),
-          title,
-          content,
-        })
-      );
+      dispatch(postAdded(title, content));
 
       setTitle("");
       setContent("");
