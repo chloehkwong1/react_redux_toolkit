@@ -1,6 +1,7 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Counter from "./features/counter/Counter";
 import PostsList from "./features/posts/PostsList";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import AddPostForm from "./features/posts/AddPostForm";
 
 function App() {
   return (
@@ -11,14 +12,18 @@ function App() {
             <Link to="/counter">Counter</Link>
           </li>
           <li>
-            <Link to="/posts">Posts</Link>
+            <Link to="/posts-list">Posts List</Link>
+          </li>
+          <li>
+            <Link to="/add-posts">Add a Post</Link>
           </li>
         </ul>
       </div>
       <div className="body">
         <Routes>
           <Route path="/counter" element={<Counter />} />
-          <Route path="/posts" element={<PostsList />} />
+          <Route path="/posts-list" element={<PostsList />} />
+          <Route path="/add-posts" element={<AddPostForm />} />
         </Routes>
       </div>
     </BrowserRouter>
