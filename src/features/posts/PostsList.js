@@ -6,6 +6,7 @@ import TimeAgo from "./TimeAgo";
 const PostsList = () => {
   const posts = useSelector(selectAllPosts);
   const reversePosts = posts.slice(0).reverse();
+  //or const orderedPosts = posts.slice().sort((a,b) => b.date.localeCompare(a.date))
 
   const renderedPosts = reversePosts.map((post) => (
     <article key={post.id}>
