@@ -1,11 +1,29 @@
-import { useSelector } from "react-redux";
-import { selectAllPosts } from "./postsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectAllPosts,
+  getPostsStatus,
+  getPostsError,
+  fetchPosts,
+} from "./postsSlice";
+import { useEffect } from "react";
+
 import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 
 const PostsList = () => {
+  const dispatch = useDispatch();
+
   const posts = useSelector(selectAllPosts);
+  const postStatus = useSelector(getPostsStatus);
+  const error = useSelector(getPostsError);
+
+  useEffect(() => {
+    if (postStatus === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [postStatus, dispatch]);
+
   const reversePosts = posts.slice(0).reverse();
   //or const orderedPosts = posts.slice().sort((a,b) => b.date.localeCompare(a.date))
 
@@ -15,7 +33,7 @@ const PostsList = () => {
       <p>{post.content.substring(0, 100)}</p>
       <p>
         <PostAuthor className="postCredit" userId={post.userId} />
-        <TimeAgo timestamp={post.date} /> 
+        <TimeAgo timestamp={post.date} />
       </p>
       <ReactionButtons post={post} />
     </article>
